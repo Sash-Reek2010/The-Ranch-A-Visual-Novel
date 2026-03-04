@@ -7,6 +7,7 @@ define meb = Character("Mrs. Meb")
 define jelle = Character("Jelle")
 define poe = Character("Poe")
 define jert = Character("Jert")
+define nessie = Character("Nessie")
 # The game starts here.
 
 label start:
@@ -142,8 +143,8 @@ label lakefishing:
     jelle "That's awesome! Let me go bring the bait and the equipment. Set up the kayaks for me please."
     "You finish setting up the kayaks and row toward the middle of the lake."
     jelle "Remember, when you catch the silver trout...."
-    "GRBRNRRRRRRRNNNNRNNNNNN"
-    "Nessie's scream has hindered your hearing"
+    nessie "GRBRNRRRRRRRNNNNRNNNNNN"
+    "Nessie's scream has hindered your ability to hear"
     menu:
         "What do you do?"
         "Follow the scream":
@@ -157,4 +158,44 @@ label jellecatch:
     jelle "Nevermind that, I have one on my line now"
     "After a few seconds of struggling, she successfully has a silvertrout in her hands"
     jelle "That's all we need for dinner tonight! We're having a party afterall!"
+    jelle "After we get back to the huts, why don't you go get ready for the party. It's getting dark soon"
+    jump secondpondencounter
+label youcatch:
+    "You continue waiting for your fish"
+    jelle "So how's the ranch life treating you?"
+    "The string suddenly goes taut. You have your very own silver trout!"
+    jelle "Thats it! PULL!"
+    "You successfully catch the silver trout!"
+    jelle "That's all we need for dinner tonight! We're having a party afterall!"
+    jelle "After we get back to the huts, why don't you go get ready for the party. It's getting dark soon"
+    jump secondpondencounter
+label nessieencounter:
+    "You ignore the fishing duties and follow the scream"
+    jelle "It's alright! I can fish for the silver trout myself. Maybe tomorro......"
+    "Jelle's voice fades as you move farther and farther"
+    "The light dims as dusk begins"
+    nessie "GNRNSSNSSSSNSNNSNSS"
+    "You hear Nessie again"
+    player "This is really boring, I should get back to the Party"
+    "Something rams past your kayak and you lose balance."
+    player "Okay this is really creepy now"
+    "You try turning back but something has you anchored in"
+    jert "HEY! WHAT ARE YOU DOING HERE?"
+    jert "You're not supposed to be here in this part of the lake"
+    "Jert is up on top of a night lamp plugging in a comically large light bulb"
+    menu:
+        "What do you do?"
+        "Ignore Jert":
+            jump nessiehelp
+        "Ask for help":
+            jump jerthelp
+label jerthelp:
+    jert "Alright, this is Nessie's territory. We choose to let her be"
+    "Jert comes over to the lake and swims toward the kayak and pulls it on to the shore"
+    "You are very surprised by the strength Jert has"
+    nessie "MERMRMNSMAN (it sounds sadder)"
+    jert "I will be taking this up with Mrs. Meb. This is what happens when we let random kids into the ranch"
+    "You quickly run away from Jert"
+    jump secondpondencounter
+label nessiehelp:
     
