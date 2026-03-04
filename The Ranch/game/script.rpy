@@ -34,6 +34,7 @@ label pond:
         meb "Oh thats alright. There's always another time"
     meb "Why don't you go meet Jelle! She'll help you with your things"
     player "That's awesome, Thanks for having me!"
+    meb "Jut be here by 8pm, I'm hosting a small party of sorts for you!"
     "Along the well trodden path you go carrying your fanny pack and a tiny suitcase of clothes. You think about the peculiar student exchange opportunity that bought you here"
     "....."
     "You are distracted by the distant pond which seems to be glowing in the distance"
@@ -49,6 +50,7 @@ label allergy:
     menu:
         "How does it sound?"
         "Awesome!!!! I LOVE ICECREAM":
+            $i=0
             jump icecream
         "I'm awfully sorry, I have the worst cold in like ever. Maybe after I feel better":
             $c=1
@@ -59,5 +61,35 @@ label tomatojam:
     "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
     meb "Here you go! I just baked this almond sap bread! Hope you like it"
     "The tomato jam and almond sap bread go well together!"
-
-
+    jump pond
+label icecream:
+    if i<5:
+        if i!=0:
+            "Mrs. Meb rushes in"
+        meb "That's just perfect! Let me fetch you a bowl!"
+        if i==0:
+            "You leave your things in the hallway and follow Mrs. Meb into what seems to be the kitchen"
+            "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
+        meb "Here you go!"
+        "The olive bark icecream is really refreshing"
+        if i==0:
+            "Mrs. Meb goes out through the back door"
+        else:
+            "Mrs. Meb goes out the back door again!"
+        menu:
+            "What do you do?"
+            "Follow Mrs. Meb out the back door":
+                jump backdoor
+            "Request another bowl of icecream":
+                $i+=1
+                jump icecream
+            "Wait for Mrs. Meb to be back"
+                "......."
+                "You keep waiting"
+                "Mrs. Meb comes back in"
+                "Oh, are you done already?"
+                jump pond
+    else:
+        meb "I'm sorry, we're out of icecream"
+        jump secretencounter
+    
