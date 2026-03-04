@@ -5,11 +5,10 @@
 define player = Character("You")
 define meb = Character("Mrs. Meb")
 define jelle = Character("Jelle")
-define poe = Character("Poe")
+define poe = Character("Mr. Poe")
 define jert = Character("Jert")
 define nessie = Character("Nessie")
 # The game starts here.
-
 label start:
     "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes"
     "The car draws close to the ranch, a pristine metal nameplate hangs over the main gate"
@@ -23,7 +22,7 @@ label start:
     menu:
         "What do you say?"
         "Thank you! But I just ate breakfast at the Moorekeeper's Inn on the way here! Maybe some other time!":
-            $c=1
+            meb "Oh thats alright. There's always another time"
             jump pond
         "Im really sorry, but I'm allergic to tomatoes":
             jump allergy
@@ -31,8 +30,6 @@ label start:
             jump tomatojam
     return
 label pond:
-    if c==1:
-        meb "Oh thats alright. There's always another time"
     meb "Why don't you go meet Jelle! She'll help you with your things"
     player "That's awesome, Thanks for having me!"
     meb "Jut be here by 8pm, I'm hosting a small party of sorts for you!"
@@ -57,7 +54,7 @@ label allergy:
             $i=0
             jump icecream
         "I'm awfully sorry, I have the worst cold in like ever. Maybe after I feel better":
-            $c=1
+            meb "Oh thats alright. There's always another time"
             $p=0
             jump pond
 label tomatojam:
@@ -198,4 +195,40 @@ label jerthelp:
     "You quickly run away from Jert"
     jump secondpondencounter
 label nessiehelp:
-    
+    "You row as fast as you can and go further into the depths of the lake."
+    "It gets darker and darker as you go in."
+    nessie "HEASDHASJJAHSDIISJK"
+    "Suddenly your kayak starts moving very fast. Something is pushing you from the back"
+    "You somehow end up at the side of the well trodden path! There is a lot of light here thanks to Jert."
+    "You get off and start walking towards your hut to get a new pair of clothes"
+    jump secondpondencounter
+label secondpondencounter:
+    "You see the pond again. It is glowing brighter than ever before"
+    menu:
+        "What do you do?"
+        "Ignore the pond and get ready for the party":
+            jump party
+        "Ignore the party and start exploring the pond":
+            jump finalpondencounter
+label party:
+    "You have your priorities set!"
+    "You reach your hut and realise that Jelle has already left for Mrs. Meb's cottage. You quickly get dressed and leave as fast as you can"
+    "You finally reach Mrs. Meb's cottage! You knock on the door"
+    jert "Oh its you. You seem late for your own party"
+    meb "Its fine Jert! You aren't late at all dear. We're waiting for Mr. Poe to arrive so we can all celebrate!"
+    "After a while of waiting and having fun talking to Jelle and Mrs. Meb someone knocks the door"
+    poe "Hello! You must be the exchange student! How are you?"
+    poe "I'm Mr. Poe! The local bank manager. I take care of most of the things happening around the ranch. I remember my own days of working here."
+    meb "Oh yes, you would try stealing all the tomatoes to feed the silverkine. But I always caught you"
+    poe "I would always be caught red handed. Literally"
+    "Everyone laughs, even Jert."
+    jelle "Okay, I think its time we bring out the cake!"
+    player "A cake!! For me? You didn't have to"
+    meb "Nonsense! Its your first day here!"
+    "They bring out the cake and your face lights up with joy!"
+    "It reads \"For the best rancher anyone could ask for\""
+    "Everyone eats the cake and they all gather round the TV next to the fireplace for a surprise movie night"
+    "You look around and then as the movie starts to play, you feel a peculiar sense of calm"
+    "You..."
+    "Are..."
+    "Home!..."
