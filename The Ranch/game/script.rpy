@@ -118,6 +118,43 @@ label jert:
     "The pond stops glowing. You choose to continue on the path"
     jump jelle
 label jelle:
-    "You see a tiny hut which looks like a mushroom over by the huge lake"
+    "After a new seconds of walking you feel tired"
+    "That's when you notice a tiny hut which looks like a mushroom over by the huge lake"
     "A girl comes out holding a rake"
+    jelle "Hi! You must be the new exchange student! I'm Jelle, the caretaker of basically everything here!"
+    jelle "Follow me, I'll show you your quarters for the duration of the trip!"
+    "You follow Jelle down the road and find a smaller mushroom hut near the larger one"
+    jelle "You'll stay here! Make yourself comfortable and meet me out by the lake. I'll tell you what you have to do in the ranch"
+    "You walk inside and fine a nice cozy bed with a fireplace next to it"
+    player "This is so nice!"
+    "You quickly get ready for a long day of work at the ranch!"
+    jelle "We're opening the ranch to tourists next week so there's a lot to plan!"
+    jelle "So what do you want to do for the day?"
+    menu:
+        "What job do you want?"
+        "Work with Jert and help him add the solar panels and nightlights all over the ranch":
+            jump solar
+        "Work with Jelle and go fishing in the lake for the rare and elusive silver trout":
+            jump lakefishing
+        "Work alone and install fences all along the sides of the well trodden path to Jelle's Hut":
+            jump fence  
+label lakefishing:
+    jelle "That's awesome! Let me go bring the bait and the equipment. Set up the kayaks for me please."
+    "You finish setting up the kayaks and row toward the middle of the lake."
+    jelle "Remember, when you catch the silver trout...."
+    "GRBRNRRRRRRRNNNNRNNNNNN"
+    "Nessie's scream has hindered your hearing"
+    menu:
+        "What do you do?"
+        "Follow the scream":
+            jump nessieencounter
+        "Ask Jelle about the silver trout":
+            jump jellecatch
+        "Ignore it and keep fishing":
+            jump youcatch
+label jellecatch:
+    "You see Jelle struggling to reel her line in"
+    jelle "Nevermind that, I have one on my line now"
+    "After a few seconds of struggling, she successfully has a silvertrout in her hands"
+    jelle "That's all we need for dinner tonight! We're having a party afterall!"
     
