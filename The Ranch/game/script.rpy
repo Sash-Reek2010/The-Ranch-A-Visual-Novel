@@ -22,6 +22,7 @@ label start:
     menu:
         "What do you say?"
         "Thank you! But I just ate breakfast at the Moorekeeper's Inn on the way here! Maybe some other time!":
+            $c=1
             jump pond
         "Im really sorry, but I'm allergic to tomatoes":
             jump allergy
@@ -29,7 +30,8 @@ label start:
             jump tomatojam
     return
 label pond:
-    meb "Oh thats alright. There's always another time"
+    if c==1:
+        meb "Oh thats alright. There's always another time"
     meb "Why don't you go meet Jelle! She'll help you with your things"
     player "That's awesome, Thanks for having me!"
     "Along the well trodden path you go carrying your fanny pack and a tiny suitcase of clothes. You think about the peculiar student exchange opportunity that bought you here"
@@ -49,13 +51,13 @@ label allergy:
         "Awesome!!!! I LOVE ICECREAM":
             jump icecream
         "I'm awfully sorry, I have the worst cold in like ever. Maybe after I feel better":
+            $c=1
             jump pond
 label tomatojam:
     meb "That's nice to hear! Let me find some nice bread for you to eat it with!"
     "You leave your things in the hallway and follow Mrs. Meb into what seems to be the kitchen"
     "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
     meb "Here you go! I just baked this almond sap bread! Hope you like it"
-    "The tomato jam and almond sap bread taste well together"
-    jump backdoor 
+    "The tomato jam and almond sap bread go well together!"
 
-      
+
