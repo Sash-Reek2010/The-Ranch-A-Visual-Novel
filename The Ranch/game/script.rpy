@@ -10,7 +10,7 @@ default b=0
 default i=0
 default p=0
 default a=0
-
+default s=0
 label start:
     "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes."
     "The car draws close to the ranch, a pristine metal nameplate hangs over the main gate."
@@ -384,9 +384,20 @@ label aftermath:
     jelle ".............."
     "You feel a sense of dread creeping up"
     poe "Your parents are inside. They're taking you back home."
+    if s==1:
+        "You find a pint of olive bark ice cream. Although it is completely a liquid now."
+        "You take a sip of it, ignoring the spoon."
+        player "URGH, who likes olive bark?"
+        "You leave it there."
     player ":silently: I guess my summer exchange is a fail."
     return
 label frogplay:
-    #WORK IN PROGRESS
+    "You play the knockoff version of Forza with the frog. You actually have human sized controllers."
+    frog "You're going down human!"
+    "After a very long gaming session. The frog wins."
+    "Obviously. It's a frog which plays video games."
+    frog "Fret not, for I have something to give you."
+    "He reaches out into his \"pockets\" and takes an intricately carved spoon out."
+    frog "Go on, go eat the olive bark icecream Mrs. Meb makes"
+    $s=1
     jump aftermath
-    
