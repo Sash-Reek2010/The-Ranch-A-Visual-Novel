@@ -11,6 +11,7 @@ define nessie = Character("Nessie")
 default b=0
 default i=0
 default p=0
+default a=0
 # The game starts here.
 label start:
     "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes."
@@ -219,15 +220,21 @@ label solar:
     "After a while you finally meet Jert."
     jert "So, you wanna work with me?"
     jert "The first thing you'll do is to make me a milkshake. Use Mrs. Meb's olive bark icecream and tomato jam."
+    jump tomilkshakeornottomilkshake
+label tomilkshakeornottomilkshake:
     menu:
         "What do you do?"
-        "Make Jert his milkshake.":
+        "Make Jert his milkshake." if a!=1:
             jump milkshake
         "Run away from Jert and go fishing with Jelle.":
             "You run away from Jert and go back to the mushroom huts."
             "You see Jelle."
             player "I changed my mind, can I go fishing with you?"
             jump lakefishing
+        "Run away to work on the fence":
+            "You walk back to Jelle's hut."
+            player "I changed my mind. Can I work on the fence instead?"
+            jump fence
 label fence:
     jelle "Alright!! You can go up to Jert's workspace and get some of the fenceposts and a mallet. Start from here and move toward the stables then to Mrs. Meb's cottage!"
     "You walk over to Jert's workspace hoping to not run into him."
@@ -255,8 +262,62 @@ label fence:
             "You walk back to Jert's workspce and leave the wagon and supplies."
             jump party   
 label milkshake:
+    if i>=5:
+        player "I ate all the icecream."
+        jump tomilkshakeornottomilkshake
+        $a=1
+    else:
+        "You go to Mrs. Meb's cottage to see if she has more icecream"
+        if b==1:
+            meb "I was just about to bring you olive bark milkshake! This is a happy coincidence."
+            "You ignore Jert's request and drink the milkshake yourself"
+            menu:
+                "What do you do now?"
+                "Work with Jelle and try lakefishing.":
+                    "You walk back to Jelle's hut"
+                    player "I changed my mind, can I fish with you instead?"
+                    jump lakefishing
+                "Work on the fence.":
+                    "You walk back to Jelle's hut"
+                    player "I changed my mind, can I work on the fence?"
+                    jump fence
+        else:
+            "You make Jert his milkshake and bring it to him."
+            jert "Now go away. Let me work in peace"
+            menu:
+                "What do you do?"
+                "What do you do now?"
+                "Work with Jelle and try lakefishing.":
+                    "You walk back to Jelle's hut"
+                    player "Jert sent me off, can I fish with you instead?"
+                    jump lakefishing
+                "Work on the fence.":
+                    "You walk back to Jelle's hut"
+                    player "Jert sent me off, can I work on the fence?"
+                    jump fence
 label finalpondencounter:
+    return
 label secretencounter:
+    meb "Wait, on second thought. I'll go look if we have more icecream in the basement frezer"
+    "RIIING RIIIING"
+    meb "Wait a while dear. Don't go down without me."
+    "Mrs. Meb runs away to pick the call"
+    "You start losing your patience"
+    "You decide to go down to the basement freezer yourself"
+    "You open the latch next to the backdoor and decend"
+    "The walk in freezer is at the end of the stairs. You open it"
+    "It is very cold...."
+    "You finally find the icecream section and rummage through the piles of boxes to find the one you need. The olive bark icecream"
+    "You instead fine a tomato jam box labelled \"Memories\""
+    "You open it"
+    "There's a bunch of postcards of people and lots of random trinkets and bracelets and other junk of sorts"
+    "You also find a lot of folded notes. You take it out of the shelf and decide to read them"
+    "\"Day 1 at the ranch!\" \n \"Mrs. Meb is a really nice woman! I love her olive bark icecream!\" \n \"Day 18 at the ranch\" \"I cannot seem to stop eating the icecream and something about the eerie pond in this ranch irks me out\" It seems to be logs of a previous rancher here."
+    "You look at the photographs and realise that there is a boy in all of it. He is about your age too."
+    "Things get silent and you feel this eerie sensation in your spine"
+    meb "I told you not to wander into the freezer dear"
+    meb "It was for your own good"
+    "Mrs Meb smiles in a soft way........almost selling the act"
 label party:
     "You reach your hut and realise that Jelle has already left for Mrs. Meb's cottage. You quickly get dressed and leave as fast as you can."
     "You finally reach Mrs. Meb's cottage! You knock on the door."
