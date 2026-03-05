@@ -1,18 +1,16 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+﻿
 define player = Character("You")
 define meb = Character("Mrs. Meb")
 define jelle = Character("Jelle")
 define poe = Character("Mr. Poe")
 define jert = Character("Jert")
 define nessie = Character("Nessie")
+define frog = Character("Froggo the Great")
 default b=0
 default i=0
 default p=0
 default a=0
-# The game starts here.
+
 label start:
     "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes."
     "The car draws close to the ranch, a pristine metal nameplate hangs over the main gate."
@@ -65,7 +63,6 @@ label tomatojam:
     "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
     meb "Here you go! I just baked this almond sap bread! Hope you like it."
     "The tomato jam and almond sap bread go well together!"
-    $p=0
     jump pond
 label icecream:
     if i<5:
@@ -256,7 +253,7 @@ label fence:
     "Instead a glowing pond catches your eye from the distance. Its the same pond!"
     menu:
         "What do you do?"
-        "Explore the pond":
+        "Explore the pond.":
             jump finalpondencounter
         "Ignore the pond and get back to the huts.":
             "You walk back to Jert's workspce and leave the wagon and supplies."
@@ -267,57 +264,73 @@ label milkshake:
         jump tomilkshakeornottomilkshake
         $a=1
     else:
-        "You go to Mrs. Meb's cottage to see if she has more icecream"
+        "You go to Mrs. Meb's cottage to see if she has more icecream."
         if b==1:
             meb "I was just about to bring you olive bark milkshake! This is a happy coincidence."
-            "You ignore Jert's request and drink the milkshake yourself"
+            "You ignore Jert's request and drink the milkshake yoursel.f"
             menu:
                 "What do you do now?"
                 "Work with Jelle and try lakefishing.":
-                    "You walk back to Jelle's hut"
+                    "You walk back to Jelle's hut."
                     player "I changed my mind, can I fish with you instead?"
                     jump lakefishing
                 "Work on the fence.":
-                    "You walk back to Jelle's hut"
+                    "You walk back to Jelle's hut."
                     player "I changed my mind, can I work on the fence?"
                     jump fence
         else:
             "You make Jert his milkshake and bring it to him."
-            jert "Now go away. Let me work in peace"
+            jert "Now go away. Let me work in peace."
             menu:
                 "What do you do?"
                 "What do you do now?"
                 "Work with Jelle and try lakefishing.":
-                    "You walk back to Jelle's hut"
+                    "You walk back to Jelle's hut."
                     player "Jert sent me off, can I fish with you instead?"
                     jump lakefishing
                 "Work on the fence.":
-                    "You walk back to Jelle's hut"
+                    "You walk back to Jelle's hut."
                     player "Jert sent me off, can I work on the fence?"
                     jump fence
-label finalpondencounter:
-    return
 label secretencounter:
     meb "Wait, on second thought. I'll go look if we have more icecream in the basement frezer"
     "RIIING RIIIING"
     meb "Wait a while dear. Don't go down without me."
-    "Mrs. Meb runs away to pick the call"
-    "You start losing your patience"
-    "You decide to go down to the basement freezer yourself"
-    "You open the latch next to the backdoor and decend"
+    "Mrs. Meb runs away to pick the call."
+    "You start losing your patience."
+    "You decide to go down to the basement freezer yourself."
+    "You open the latch next to the backdoor and decend."
     "The walk in freezer is at the end of the stairs. You open it"
     "It is very cold...."
-    "You finally find the icecream section and rummage through the piles of boxes to find the one you need. The olive bark icecream"
+    "You finally find the icecream section and rummage through the piles of boxes to find the one you need. The olive bark icecream."
     "You instead fine a tomato jam box labelled \"Memories\""
     "You open it"
     "There's a bunch of postcards of people and lots of random trinkets and bracelets and other junk of sorts"
-    "You also find a lot of folded notes. You take it out of the shelf and decide to read them"
+    "You also find a lot of folded notes. You take it out of the shelf and decide to read them."
     "\"Day 1 at the ranch!\" \n \"Mrs. Meb is a really nice woman! I love her olive bark icecream!\" \n \"Day 18 at the ranch\" \"I cannot seem to stop eating the icecream and something about the eerie pond in this ranch irks me out\" It seems to be logs of a previous rancher here."
     "You look at the photographs and realise that there is a boy in all of it. He is about your age too."
-    "Things get silent and you feel this eerie sensation in your spine"
-    meb "I told you not to wander into the freezer dear"
-    meb "It was for your own good"
-    "Mrs Meb smiles in a soft way........almost selling the act"
+    "Things get silent and you feel this eerie sensation in your spine."
+    meb "I told you not to wander into the freezer dear."
+    meb "It was for your own good."
+    "Mrs Meb smiles in a soft way........almost selling the act."
+    meb "This is exactly what happened to the other exchange student."
+    "Mrs. Meb grabs a pint of icecream and starts eating it. She slowly turns green and starts melting."
+    "She becomes THE ICECREAM GOBLIN."
+    "You try to bolt past her."
+    meb "YOU SHALL NOT PASS"
+    "She reaches out and grabs you against the wall."
+    "She grabs a ball of icecream and flings it at your face."
+    "Everything goes black."
+    "......................."
+    meb "Oh dear, are you alright?"
+    "You open your eyes."
+    player "Where am I?"
+    "You look around and realise that you are in a hospital."
+    meb "I'm extremely sorry my dear, I might have accidentally topped the icecream with my tomato jam."
+    meb "The doctors tell me that you hallucinated your way through the day. I will understand if you want to go back home"
+    "Your parents are here"
+    player "sigh, I guess my student exchange is a fail"
+    return
 label party:
     "You reach your hut and realise that Jelle has already left for Mrs. Meb's cottage. You quickly get dressed and leave as fast as you can."
     "You finally reach Mrs. Meb's cottage! You knock on the door."
@@ -338,3 +351,42 @@ label party:
     "You look around and then as the movie starts to play, you feel a peculiar sense of calm."
     "The ranch finally feels like home..."
     return
+label finalpondencounter:
+    "You walk toward the pond. Looking around for any signs of danger. Jert's night lights do not reach this far, so the only source of light is the glowof the pond."
+    "You get down and inspect the pond."
+    "SPLASH!"
+    "A tiny frog jumps out. It is wearing a tophat and a monocle!"
+    frog "Welcome! I am Froggo the Great!"
+    if p!=0:
+        frog "URGH!! You stink of olive bark icecream. Begone mortal! At once!!"
+        "You decide to leave. You feel dissapointed."
+        jump party
+    else:
+        frog "Follow me into the pond and I shall show you the meaning of a Rancher!"
+        "You jump inside the pond."
+        "You emerge out into a tiny \'hobbit hole\'-esque area and see what you might expect in a teenager's bedroom."
+        "The really tiny game console is on and the tv is running a crude version of Forza"
+        frog "This is my home! But besides that. Care to join me for a match? I will revel the truth once you beat me ingame."
+        menu:
+            "What do you do?"
+            "You accept the offer and play!":
+                jump frogplay
+            "You decline the offer and get back to the party":
+                jump aftermath
+label aftermath:
+    "You emerge out of the pond fully dry. The owls are hooting in the distance and the moon is directly over you."
+    "You are extremely late for the party. You run down to Mrs. Meb's cottage."
+    "You knock on the door."
+    poe "Now you show up!"
+    poe "I'm Mr. Poe the local banker. Mrs. Meb was very dissapointed you didn't show up."
+    poe "She has sold the ranch off to the Ketchup buiness in the next town and decided to move to The Bahamas and enjoy her retirement."
+    jert "I hope youre happy now!"
+    jelle ".............."
+    "You feel a sense of dread creeping up"
+    poe "Your parents are inside. They're taking you back home."
+    player ":silently: I guess my summer exchange is a fail."
+    return
+label frogplay:
+    #WORK IN PROGRESS
+    jump aftermath
+    
