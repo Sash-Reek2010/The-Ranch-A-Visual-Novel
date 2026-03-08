@@ -11,12 +11,47 @@ default i=0
 default p=0
 default a=0
 default s=0
+init:
+    image sky:
+        "images/BAKCGROUND MAIN SKY.jpg"
+    image nightsky:
+        "images/BAKCGROUND MAIN SKY night.jpg"
+    image player:
+        "images/player.webp"
+    image meb:
+        "images/mrs meb.webp"
+    image jelle:
+        "images/jelle.webp"
+    image jert:
+        "images/jert.webp"
+    image frog:
+        "images/froggo.webp"
+    image fishing:
+        "images/skyfishing.png"
+    image insidepond:
+        "images/froggoinside.png"
+    image inside:
+        "images/inside.png"
+    image secret:
+        "images/secretencounter.png"
+    image tomatojam:
+        "images/tomatojam.webp"
+    image icecream:
+        "images/icecream.webp"
+    image milkshake:
+        "images/milkshake.webp"
 label start:
+    scene sky with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes."
     "The car draws close to the ranch, a pristine metal nameplate hangs over the main gate."
     "It reads \"The Silverkine Ranch\". You look at the neatly folded envelope inside your fanny pack and confirm that you are in the right place."
     "You pay the cab and walk into the ranch. There's a plethora of animal noises. You go toward the tiny cottage with smoke bellowing out."
     "You knock the door, noticing the nameplate next to the door jamb."
+    show meb  at right with dissolve:
+        zoom 1.5
     meb "Oh Hello! You must be the one Mr Poe sent for, please come in."
     "The smell of tomatoes fill your nostrils as you see Mrs. Meb making her patent pending tomato jam."
     meb "Would you like to try some tomato jam?"
@@ -35,6 +70,7 @@ label pond:
     meb "Why don't you go meet Jelle! She'll help you with your things."
     player "That's awesome, Thanks for having me!"
     meb "Jut be here by 8pm, I'm hosting a small party of sorts for you!"
+    hide meb with dissolve
     jump firstpondencounter
 label firstpondencounter:
     "Along the well trodden path you go carrying your fanny pack and a tiny suitcase of clothes. You think about the peculiar student exchange opportunity that bought you here."
@@ -60,9 +96,17 @@ label allergy:
 label tomatojam:
     meb "That's nice to hear! Let me find some nice bread for you to eat it with!"
     "You leave your things in the hallway and follow Mrs. Meb into what seems to be the kitchen."
+    scene inside with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
+    show meb  at right with dissolve:
+        zoom 1.5
     "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
     meb "Here you go! I just baked this almond sap bread! Hope you like it."
+    show tomatojam at right with dissolve 
     "The tomato jam and almond sap bread go well together!"
+    hide tomatojam with dissolve
     jump pond
 label icecream:
     if i<5:
@@ -71,13 +115,22 @@ label icecream:
         meb "That's just perfect! Let me fetch you a bowl!"
         if i==0:
             "You leave your things in the hallway and follow Mrs. Meb into what seems to be the kitchen."
+            scene inside
+            show player with dissolve:
+                zoom 1.5
+                yalign 1.0
+            show meb at right with dissolve:
+                zoom 1.5
             "There are lots and LOTS of tomatoes in huge rucksacks all ripe the same colour of Rot. You can faintly catch a glimpse of the vast tomato plantantion through the ajar backdoor"
         meb "Here you go!"
+        show icecream with dissolve
         "The olive bark icecream is really refreshing."
         if i==0:
             "Mrs. Meb goes out through the back door."
+            hide meb with dissolve
         else:
             "Mrs. Meb goes out the back door again!"
+            hide meb with dissolve
         menu:
             "What do you do?"
             "Follow Mrs. Meb out the back door.":
@@ -89,6 +142,8 @@ label icecream:
                 "......."
                 "You keep waitin."
                 "Mrs. Meb comes back in."
+                show meb at right with dissolve:
+                    zoom 1.5
                 "Oh, are you done already?"
                 $p=1
                 jump pond
@@ -98,26 +153,38 @@ label icecream:
 label backdoor:
     $b=1
     "You finish your icecream and walk toward the door, you slowly push the door forward."
+    scene sky with fade
     "It is the most glorious sight of your life! You see rows and rows of tomato plants full of Rot coloured tomatoes."
+    show meb at right with dissolve:
+        zoom 1.5
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     meb "This is the result of over 10 years of \"tomato-ing\" Mr Meb loved my tomato jam. This is my way of remembering him."
     "Mrs. Meb wipes a tiny droplet of tear that formed with her Rot coloured handkerchief that appropriately had tomatoes embroidered into."
     meb "Come on, let me accompany you to Jelle's little hut! She's the best help anyone can ask for. Bless her heart."
     "You quickly grab your things and follow Mrs Meb out into the field."
     "RIIIINGGG RIIIIINGG"
     meb "Oh, that's the landline. It has to be Mr Poe calling to ask about you. Why don't you continue along this path. You'll know where to stop when you see it!"
+    hide meb with dissolve
     $p=1
     jump firstpondencounter
 label jert:
+    show jert at right with dissolve:
+        zoom 1.5
     "A young man blocks your way."
     jert "You must be the new guy. Mr Poe told me all about you."
     "You don't like the look of him very much."
     jert "I'm Jert the ranch's head engineer"
     jert "... the only engineer."
     "The pond stops glowing. You choose to continue on the path."
+    hide jert with dissolve
     jump jelle
 label jelle:
     "After a new seconds of walking you feel tired."
     "That's when you notice a tiny hut which looks like a mushroom over by the huge lake."
+    show jelle at right with dissolve:
+        zoom 1.5
     "A girl comes out holding a rake."
     jelle "Hi! You must be the new exchange student! I'm Jelle, the caretaker of basically everything here!"
     jelle "Follow me, I'll show you your quarters for the duration of the trip!"
@@ -139,6 +206,12 @@ label jelle:
 label lakefishing:
     jelle "That's awesome! Let me go bring the bait and the equipment. Set up the kayaks for me please."
     "You finish setting up the kayaks and row toward the middle of the lake."
+    scene skyfishing with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
+    show jelle at right with dissolve:
+        zoom 1.5
     jelle "Remember, when you catch the silver trout...."
     nessie "GRBRNRRRRRRRNNNNRNNNNNN"
     "Nessie's scream has hindered your ability to hear."
@@ -170,6 +243,7 @@ label nessieencounter:
     "You ignore the fishing duties and follow the scream."
     jelle "It's alright! I can fish for the silver trout myself. Maybe tomorro......"
     "Jelle's voice fades as you move farther and farther."
+    hide jelle with dissolve
     "The light dims as dusk begins."
     nessie "GNRNSSNSSSSNSNNSNSS"
     "You hear Nessie again"
@@ -177,6 +251,8 @@ label nessieencounter:
     "Something rams past your kayak and you lose balance."
     player "Okay this is really creepy now."
     "You try turning back but something has you anchored in."
+    show jert at right with dissolve:
+        zoom 1.5
     jert "HEY! WHAT ARE YOU DOING HERE?"
     jert "You're not supposed to be here in this part of the lake."
     "Jert is up on top of a night lamp plugging in a comically large light bulb."
@@ -195,14 +271,20 @@ label jerthelp:
     "You quickly run away from Jert"
     jump secondpondencounter
 label nessiehelp:
+    hide jert with dissolve
     "You row as fast as you can and go further into the depths of the lake."
     "It gets darker and darker as you go in."
     nessie "HEASDHASJJAHSDIISJK"
     "Suddenly your kayak starts moving very fast. Something is pushing you from the back."
+    scene nightsky with fade
     "You somehow end up at the side of the well trodden path! There is a lot of light here thanks to Jert."
     "You get off and start walking towards your hut to get a new pair of clothes."
     jump secondpondencounter
 label secondpondencounter:
+    scene nightsky
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "You see the pond again. It is glowing brighter than ever before."
     menu:
         "What do you do?"
@@ -214,7 +296,10 @@ label secondpondencounter:
 label solar:
     jelle "Alright! Just walk along the well trodden path until you meet Jert along the way!"
     "You start walking back."
+    hide jelle with dissolve
     "After a while you finally meet Jert."
+    show jert at right with dissolve:
+        zoom 1.5
     jert "So, you wanna work with me?"
     jert "The first thing you'll do is to make me a milkshake. Use Mrs. Meb's olive bark icecream and tomato jam."
     jump tomilkshakeornottomilkshake
@@ -225,20 +310,30 @@ label tomilkshakeornottomilkshake:
             jump milkshake
         "Run away from Jert and go fishing with Jelle.":
             "You run away from Jert and go back to the mushroom huts."
+            hide jert with dissolve
+            show jelle at right with dissolve:
+                zoom 1.5
             "You see Jelle."
             player "I changed my mind, can I go fishing with you?"
             jump lakefishing
         "Run away to work on the fence":
             "You walk back to Jelle's hut."
+            hide jert with dissolve
+            show jelle at right with dissolve:
+                zoom 1.5
             player "I changed my mind. Can I work on the fence instead?"
             jump fence
 label fence:
     jelle "Alright!! You can go up to Jert's workspace and get some of the fenceposts and a mallet. Start from here and move toward the stables then to Mrs. Meb's cottage!"
+    hide jelle with dissolve
     "You walk over to Jert's workspace hoping to not run into him."
     "You bring a wagon full of supplies with you and start pushing down the fenceposts."
     "It is mundane work but you like being in the silence."
     if b==1:
+        show meb at right with dissolve:
+            zoom 1.5
         meb "Oh look at you working hard on your first day! Here! I bought your favourite olive bark icecream.. but in the form of a refreshing milkshake!"
+        show milkshake at right with dissolve
         "You thank Mrs. Meb and take a sip of the milkshake!"
         "It fills you up with determination and you finish the fence job a few hours earlier than you expected!"
         menu:
@@ -247,6 +342,10 @@ label fence:
                 "You go back to Jert's workspace and get more supplies and start fencing the path to the stables."
             "Go find Jelle and try lake fishing!":
                 jump lakefishing
+    scene nightsky
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "The sun slowly fades down the horizon and Jert's nightlights pump into action."
     "You finally finish the fence and you look around for your wagon."
     "You do not find your wagon.."
@@ -264,41 +363,69 @@ label milkshake:
         jump tomilkshakeornottomilkshake
         $a=1
     else:
+        hide jert with dissolve
         "You go to Mrs. Meb's cottage to see if she has more icecream."
+        scene inside with fade
         if b==1:
+            show meb at right with dissolve:
+                zoom 1.5
             meb "I was just about to bring you olive bark milkshake! This is a happy coincidence."
-            "You ignore Jert's request and drink the milkshake yoursel.f"
+            show milkshake at right with dissolve
+            "You ignore Jert's request and drink the milkshake yourself"
             menu:
                 "What do you do now?"
                 "Work with Jelle and try lakefishing.":
+                    hide jert with dissolve
                     "You walk back to Jelle's hut."
+                    show jelle at right with dissolve:
+                        zoom 1.5
                     player "I changed my mind, can I fish with you instead?"
                     jump lakefishing
                 "Work on the fence.":
+                    hide jert with dissolve
                     "You walk back to Jelle's hut."
+                    show jelle at right with dissolve:
+                        zoom 1.5
                     player "I changed my mind, can I work on the fence?"
                     jump fence
         else:
             "You make Jert his milkshake and bring it to him."
+            scene sky with fade
+            show player with dissolve:
+                zoom 1.5
+                yalign 1.0
+            show jert at right with dissolve:
+                zoom 1.5
             jert "Now go away. Let me work in peace."
             menu:
                 "What do you do?"
                 "What do you do now?"
                 "Work with Jelle and try lakefishing.":
+                    hide jert with dissolve
                     "You walk back to Jelle's hut."
+                    show jelle at right with dissolve:
+                        zoom 1.5
                     player "Jert sent me off, can I fish with you instead?"
                     jump lakefishing
                 "Work on the fence.":
+                    hide jert with dissolve
                     "You walk back to Jelle's hut."
+                    show jelle at right with dissolve:
+                        zoom 1.5
                     player "Jert sent me off, can I work on the fence?"
                     jump fence
 label secretencounter:
     meb "Wait, on second thought. I'll go look if we have more icecream in the basement frezer"
     "RIIING RIIIING"
     meb "Wait a while dear. Don't go down without me."
+    hide meb with dissolve
     "Mrs. Meb runs away to pick the call."
     "You start losing your patience."
     "You decide to go down to the basement freezer yourself."
+    scene secretencounter with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "You open the latch next to the backdoor and decend."
     "The walk in freezer is at the end of the stairs. You open it"
     "It is very cold...."
@@ -310,6 +437,8 @@ label secretencounter:
     "\"Day 1 at the ranch!\" \n \"Mrs. Meb is a really nice woman! I love her olive bark icecream!\" \n \"Day 18 at the ranch\" \"I cannot seem to stop eating the icecream and something about the eerie pond in this ranch irks me out\" It seems to be logs of a previous rancher here."
     "You look at the photographs and realise that there is a boy in all of it. He is about your age too."
     "Things get silent and you feel this eerie sensation in your spine."
+    show meb at right with dissolve:
+        zoom 1.5
     meb "I told you not to wander into the freezer dear."
     meb "It was for your own good."
     "Mrs Meb smiles in a soft way........almost selling the act."
@@ -322,8 +451,14 @@ label secretencounter:
     "She grabs a ball of icecream and flings it at your face."
     "Everything goes black."
     "......................."
+    scene inside with fade
+    show meb at right with dissolve:
+        zoom 1.5
     meb "Oh dear, are you alright?"
     "You open your eyes."
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     player "Where am I?"
     "You look around and realise that you are in a hospital."
     meb "I'm extremely sorry my dear, I might have accidentally topped the icecream with my tomato jam."
@@ -334,7 +469,15 @@ label secretencounter:
 label party:
     "You reach your hut and realise that Jelle has already left for Mrs. Meb's cottage. You quickly get dressed and leave as fast as you can."
     "You finally reach Mrs. Meb's cottage! You knock on the door."
+    scene inside with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
+    show jert at right with dissolve:
+        zoom 1.5
     jert "Oh its you. You seem late for your own party"
+    show meb at right with dissolve:
+        zoom 1.5
     meb "Its fine Jert! You aren't late at all dear. We're waiting for Mr. Poe to arrive so we can all celebrate!"
     "After a while of waiting and having fun talking to Jelle and Mrs. Meb someone knocks the door."
     poe "Hello! You must be the exchange student! How are you?"
@@ -355,15 +498,22 @@ label finalpondencounter:
     "You walk toward the pond. Looking around for any signs of danger. Jert's night lights do not reach this far, so the only source of light is the glowof the pond."
     "You get down and inspect the pond."
     "SPLASH!"
+    show frog at right with dissolve
     "A tiny frog jumps out. It is wearing a tophat and a monocle!"
     frog "Welcome! I am Froggo the Great!"
     if p!=0:
         frog "URGH!! You stink of olive bark icecream. Begone mortal! At once!!"
+        hide frog with dissolve
         "You decide to leave. You feel dissapointed."
         jump party
     else:
         frog "Follow me into the pond and I shall show you the meaning of a Rancher!"
         "You jump inside the pond."
+        scene insidepond with fade
+        show player with dissolve:
+            zoom 1.5
+            yalign 1.0
+        show frog at right with dissolve
         "You emerge out into a tiny \'hobbit hole\'-esque area and see what you might expect in a teenager's bedroom."
         "The really tiny game console is on and the tv is running a crude version of Forza"
         frog "This is my home! But besides that. Care to join me for a match? I will revel the truth once you beat me ingame."
@@ -374,6 +524,10 @@ label finalpondencounter:
             "You decline the offer and get back to the party":
                 jump aftermath
 label aftermath:
+    scene nightsky with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "You emerge out of the pond fully dry. The owls are hooting in the distance and the moon is directly over you."
     "You are extremely late for the party. You run down to Mrs. Meb's cottage."
     "You knock on the door."
@@ -384,10 +538,16 @@ label aftermath:
     jelle ".............."
     "You feel a sense of dread creeping up"
     poe "Your parents are inside. They're taking you back home."
+    scene inside with fade
     if s==1:
-        "You find a pint of olive bark ice cream. Although it is completely a liquid now."
+        show player with dissolve:
+            zoom 1.5
+            yalign 1.0
+        show icecream with dissolve
+        "You find a cup of olive bark ice cream. Although it is completely a liquid now."
         "You take a sip of it, ignoring the spoon."
         player "URGH, who likes olive bark?"
+        hide icecream
         "You leave it there."
     player ":silently: I guess my summer exchange is a fail."
     return
