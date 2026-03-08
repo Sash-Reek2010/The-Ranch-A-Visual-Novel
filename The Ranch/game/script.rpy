@@ -40,12 +40,21 @@ init:
         "images/icecream.webp"
     image milkshake:
         "images/milkshake.webp"
+    image poe:
+        "images/poe.webp"
+    image end:
+        "images/end.png"
+    image start:
+        "images/map.png"
+    image monster:
+        "images/monster.webp"
 label start:
+    show start with Fade(1.0,0.0,3.0)
     scene sky with fade
     show player with dissolve:
         zoom 1.5
         yalign 1.0
-    "The sky is a deep shade of Rot because of your cheap sunglasses. You quickly take them off for the bright blue light to caress your little eyes."
+    "The sky is a deep shade of Rot because of your cheap sunglasses. You don't take them off for the bright orange light to caress your little eyes."
     "The car draws close to the ranch, a pristine metal nameplate hangs over the main gate."
     "It reads \"The Silverkine Ranch\". You look at the neatly folded envelope inside your fanny pack and confirm that you are in the right place."
     "You pay the cab and walk into the ranch. There's a plethora of animal noises. You go toward the tiny cottage with smoke bellowing out."
@@ -73,6 +82,10 @@ label pond:
     hide meb with dissolve
     jump firstpondencounter
 label firstpondencounter:
+    scene sky with fade
+    show player with dissolve:
+        zoom 1.5
+        yalign 1.0
     "Along the well trodden path you go carrying your fanny pack and a tiny suitcase of clothes. You think about the peculiar student exchange opportunity that bought you here."
     "....."
     "You are distracted by the distant pond which seems to be glowing in the distance."
@@ -125,6 +138,7 @@ label icecream:
         meb "Here you go!"
         show icecream with dissolve
         "The olive bark icecream is really refreshing."
+        hide icecream with dissolve
         if i==0:
             "Mrs. Meb goes out through the back door."
             hide meb with dissolve
@@ -136,6 +150,8 @@ label icecream:
             "Follow Mrs. Meb out the back door.":
                 jump backdoor
             "Request another bowl of icecream.":
+                show meb at right with dissolve:
+                    zoom 1.5
                 $i+=1
                 jump icecream
             "Wait for Mrs. Meb to be back.":
@@ -269,6 +285,7 @@ label jerthelp:
     nessie "MERMRMNSMAN (it sounds sadder)"
     jert "I will be taking this up with Mrs. Meb. This is what happens when we let random kids into the ranch."
     "You quickly run away from Jert"
+    "It starts getting dark around you"
     jump secondpondencounter
 label nessiehelp:
     hide jert with dissolve
@@ -443,7 +460,10 @@ label secretencounter:
     meb "It was for your own good."
     "Mrs Meb smiles in a soft way........almost selling the act."
     meb "This is exactly what happened to the other exchange student."
-    "Mrs. Meb grabs a pint of icecream and starts eating it. She slowly turns green and starts melting."
+    "Mrs. Meb grabs a pint of icecream and starts eating it. She slowly turns blue and starts sorta melting."
+    hide meb with dissolve
+    show monster at right with dissolve:
+        zoom 1.5
     "She becomes THE ICECREAM GOBLIN."
     "You try to bolt past her."
     meb "YOU SHALL NOT PASS"
@@ -460,12 +480,15 @@ label secretencounter:
         zoom 1.5
         yalign 1.0
     player "Where am I?"
-    "You look around and realise that you are in a hospital."
+    "You look around and realise that you are in the living room."
     meb "I'm extremely sorry my dear, I might have accidentally topped the icecream with my tomato jam."
-    meb "The doctors tell me that you hallucinated your way through the day. I will understand if you want to go back home"
+    meb "The doctors here tell me that you hallucinated your way through the day. They treated you but I will understand if you want to go back home"
     "Your parents are here"
-    player "sigh, I guess my student exchange is a fail"
+    player "I guess my student exchange is a fail"
+    window hide
+    show end with Fade(3.0,0.0,3.0)
     return
+
 label party:
     "You reach your hut and realise that Jelle has already left for Mrs. Meb's cottage. You quickly get dressed and leave as fast as you can."
     "You finally reach Mrs. Meb's cottage! You knock on the door."
@@ -476,6 +499,7 @@ label party:
     show jert at right with dissolve:
         zoom 1.5
     jert "Oh its you. You seem late for your own party"
+    hide jert with dissolve
     show meb at right with dissolve:
         zoom 1.5
     meb "Its fine Jert! You aren't late at all dear. We're waiting for Mr. Poe to arrive so we can all celebrate!"
@@ -493,6 +517,8 @@ label party:
     "Everyone eats the cake and they all gather round the TV next to the fireplace for a surprise movie night."
     "You look around and then as the movie starts to play, you feel a peculiar sense of calm."
     "The ranch finally feels like home..."
+    window hide
+    show end with Fade(2.0,0.0,5.0)
     return
 label finalpondencounter:
     "You walk toward the pond. Looking around for any signs of danger. Jert's night lights do not reach this far, so the only source of light is the glowof the pond."
@@ -516,7 +542,7 @@ label finalpondencounter:
         show frog at right with dissolve
         "You emerge out into a tiny \'hobbit hole\'-esque area and see what you might expect in a teenager's bedroom."
         "The really tiny game console is on and the tv is running a crude version of Forza"
-        frog "This is my home! But besides that. Care to join me for a match? I will revel the truth once you beat me ingame."
+        frog "This is my home! But besides that. Care to join me for a match? I will reveal the truth once you beat me ingame."
         menu:
             "What do you do?"
             "You accept the offer and play!":
@@ -531,10 +557,18 @@ label aftermath:
     "You emerge out of the pond fully dry. The owls are hooting in the distance and the moon is directly over you."
     "You are extremely late for the party. You run down to Mrs. Meb's cottage."
     "You knock on the door."
+    show poe at right with dissolve:
+        zoom 1.5
     poe "Now you show up!"
     poe "I'm Mr. Poe the local banker. Mrs. Meb was very dissapointed you didn't show up."
     poe "She has sold the ranch off to the Ketchup buiness in the next town and decided to move to The Bahamas and enjoy her retirement."
+    hide poe with dissolve
+    show jert at right with dissolve:
+        zoom 1.5
     jert "I hope youre happy now!"
+    hide jert with dissolve
+    show jelle at right with dissolve:
+        zoom 1.5
     jelle ".............."
     "You feel a sense of dread creeping up"
     poe "Your parents are inside. They're taking you back home."
@@ -549,7 +583,9 @@ label aftermath:
         player "URGH, who likes olive bark?"
         hide icecream
         "You leave it there."
-    player ":silently: I guess my summer exchange is a fail."
+    player "I guess my summer exchange is a fail."
+    window hide
+    show end with Fade(3.0,0.0,3.0)
     return
 label frogplay:
     "You play the knockoff version of Forza with the frog. You actually have human sized controllers."
