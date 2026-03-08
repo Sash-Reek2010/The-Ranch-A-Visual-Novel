@@ -486,7 +486,7 @@ label secretencounter:
     "Your parents are here"
     player "I guess my student exchange is a fail"
     window hide
-    show end with Fade(3.0,0.0,3.0)
+    show end with Fade(1.0,0.0,3.0)
     return
 
 label party:
@@ -518,7 +518,7 @@ label party:
     "You look around and then as the movie starts to play, you feel a peculiar sense of calm."
     "The ranch finally feels like home..."
     window hide
-    show end with Fade(2.0,0.0,5.0)
+    show end with Fade(1.0,0.0,5.0)
     return
 label finalpondencounter:
     "You walk toward the pond. Looking around for any signs of danger. Jert's night lights do not reach this far, so the only source of light is the glowof the pond."
@@ -585,7 +585,7 @@ label aftermath:
         "You leave it there."
     player "I guess my summer exchange is a fail."
     window hide
-    show end with Fade(3.0,0.0,3.0)
+    show end with Fade(1.0,0.0,3.0)
     return
 label frogplay:
     "You play the knockoff version of Forza with the frog. You actually have human sized controllers."
